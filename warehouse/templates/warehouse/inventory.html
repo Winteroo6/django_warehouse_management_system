@@ -1,0 +1,60 @@
+{% extends 'warehouse/main.html' %}
+
+
+{% block content %}
+
+<br>
+
+<div class = "row">
+	<div class = "col-md">
+		<div class = "card card-body">
+			<h5>Inventory</h5>
+		</div>
+
+		<div class ="row">
+			<div class = "col">
+				<div class = "card card-body">
+					<form method="get">
+						<button class = "btn btn-primary" type="submit">Search</button>	
+					</form>
+				</div>
+			</div>
+		</div>	
+	
+		<div class = "card card-body">
+			<table class = "table">
+				<tr>
+					<th>Category</th>
+					<th>SKU</th>
+					<th>Product</th>
+					<th>Price</th>
+					<th>Quantity</th>
+					<th>Location</th>
+					<th>Supplier</th>
+				</tr>	
+
+				{% for i in inventory %}
+
+					<tr>
+						<td>{{i.category}}</td>
+						<td>{{i.sku}}</td>
+						<td>{{i.product}}</td>
+						<td>{{i.price}}</td>
+						<td>{{i.quantity}}</td>
+						<td>{{i.location}}</td>
+						<td>{{i.supplier}}</td>
+					</tr>	
+				{% endfor %}	
+
+
+
+			</table>
+
+		</div>
+	</div>		
+
+
+
+</div>
+
+{% endblock %}

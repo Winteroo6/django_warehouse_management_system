@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar with Active Button</title>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  
+  <style>
+    .btn {
+      background-color: #7abecc;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      margin: 5px;
+      transition: all 0.2s;
+      border-radius: 5px;
+      color: #ffffff;
+    }
+    
+    .btn:hover {
+      background-color: #5fa5ad;
+      color: #fff;
+    }
+    
+    .btn.active {
+      background-color: #5fa5ad;
+      color: #0a4275;
+      box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2); /* Indented/pressed effect */
+    }
+    
+    .navbar {
+      background-color: #0a4275;
+      padding: 10px;
+    }
+    
+    .navbar-toggler {
+      background-color: #fff;
+      border: none;
+    }
+    
+    .navbar-nav .nav-link {
+      color: #ffffff !important;
+    }
+
+    .hello-msg {
+      font-size: 18px;
+      color: #fff;
+      margin-right: 20px;
+    }
+    
+    img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+  </style>
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <img src="{% static 'images/zelogo.png' %}">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="btn nav-link {% if request.path == '/' %}active{% endif %}" href="http://127.0.0.1:8000/">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn nav-link {% if request.path == '/inventory/' %}active{% endif %}" href="http://127.0.0.1:8000/inventory/">Inventory</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn nav-link {% if request.path == '/customers/' %}active{% endif %}" href="http://127.0.0.1:8000/customers/">Customers</a>
+        </li>
+      </ul>
+    </div>
+
+    <span class="hello-msg">Hello, {{request.user}}</span>
+    <span><a class = "hello-msg" href = "{% url 'logout' %}">Log Out</a></span>
+
+  </nav>
+</body>
+</html>
